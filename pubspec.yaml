@@ -1,0 +1,51 @@
+name: pokedex
+description: "A new Flutter project."
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.2.4 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  dio: ^5.4.3+1
+
+  ## State Management
+  #
+  # Bloc State Management
+  # https://pub.dev/packages/flutter_bloc
+  flutter_bloc: ^8.1.5
+  equatable: ^2.0.5
+
+  # Code generation
+  #
+  # Code-generators available to help you deal with immutable objects
+  # https://pub.dev/packages/freezed
+  freezed: ^2.5.2
+  freezed_annotation: ^2.4.1
+
+  # To generate to/from JSON code for a class
+  # https://pub.dev/packages/json_serializable
+  json_annotation: ^4.8.1
+  json_serializable: ^6.7.1
+  get_it: ^7.6.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Standalone generator
+  # https://pub.dev/packages/build_runner
+  build_runner: ^2.4.8
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  generate: false
+  uses-material-design: true
+  assets:
+    - assets/
