@@ -14,5 +14,8 @@ class PokemonState with _$PokemonState {
       {@Default(PokemonStatus.loading) PokemonStatus status,
       @Default(0) int pageSelected,
       @Default([]) List<Pokemon> pokemonList,
+      @Default([]) List<PokemonTypeListEntity> pokemonTypeListData,
+      @Default([]) List<NameUrlEntity> pokemonTypeListNames,
+      @Default(null) NameUrlEntity? pokemonTypeSelected,
       @Default([]) List<PokemonPageEntity> pokemonPageList}) = _PokemonInitial;
 }

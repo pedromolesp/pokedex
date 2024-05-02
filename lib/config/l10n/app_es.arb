@@ -1,0 +1,6 @@
+{
+    "error": "Ha ocurrido un error",
+    "homeSelector": "Selecciona el tipo",
+    "weight": "Peso: {weight} kg",
+    "height": "Altura: {height} m"
+}

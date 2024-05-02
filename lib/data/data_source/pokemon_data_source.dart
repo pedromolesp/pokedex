@@ -9,4 +9,6 @@ abstract interface class PokemonDataSource {
   Future<Result<PokemonModel, Exception>> getPokemonInfo(
     String url,
   );
+  Future<Result<List<NameUrl>, Exception>> getPokemonTypes();
+  Future<Result<List<NameUrl>, Exception>> getPokemonListByType(String url);
 }

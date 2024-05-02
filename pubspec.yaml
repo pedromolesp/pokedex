@@ -35,6 +35,11 @@ dependencies:
   get_it: ^7.6.7
   go_router: ^14.0.2
 
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.1
+  flutter_launcher_icons: ^0.13.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -45,8 +50,14 @@ dev_dependencies:
 
   flutter_lints: ^2.0.0
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/pokeball.png"
+  min_sdk_android: 21
+
 flutter:
-  generate: false
+  generate: true
   uses-material-design: true
   assets:
     - assets/

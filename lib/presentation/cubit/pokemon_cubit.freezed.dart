@@ -19,26 +19,49 @@ mixin _$PokemonState {
   PokemonStatus get status => throw _privateConstructorUsedError;
   int get pageSelected => throw _privateConstructorUsedError;
   List<Pokemon> get pokemonList => throw _privateConstructorUsedError;
+  List<PokemonTypeListEntity> get pokemonTypeListData =>
+      throw _privateConstructorUsedError;
+  List<NameUrlEntity> get pokemonTypeListNames =>
+      throw _privateConstructorUsedError;
+  NameUrlEntity? get pokemonTypeSelected => throw _privateConstructorUsedError;
   List<PokemonPageEntity> get pokemonPageList =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PokemonStatus status, int pageSelected,
-            List<Pokemon> pokemonList, List<PokemonPageEntity> pokemonPageList)
+    required TResult Function(
+            PokemonStatus status,
+            int pageSelected,
+            List<Pokemon> pokemonList,
+            List<PokemonTypeListEntity> pokemonTypeListData,
+            List<NameUrlEntity> pokemonTypeListNames,
+            NameUrlEntity? pokemonTypeSelected,
+            List<PokemonPageEntity> pokemonPageList)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PokemonStatus status, int pageSelected,
-            List<Pokemon> pokemonList, List<PokemonPageEntity> pokemonPageList)?
+    TResult? Function(
+            PokemonStatus status,
+            int pageSelected,
+            List<Pokemon> pokemonList,
+            List<PokemonTypeListEntity> pokemonTypeListData,
+            List<NameUrlEntity> pokemonTypeListNames,
+            NameUrlEntity? pokemonTypeSelected,
+            List<PokemonPageEntity> pokemonPageList)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PokemonStatus status, int pageSelected,
-            List<Pokemon> pokemonList, List<PokemonPageEntity> pokemonPageList)?
+    TResult Function(
+            PokemonStatus status,
+            int pageSelected,
+            List<Pokemon> pokemonList,
+            List<PokemonTypeListEntity> pokemonTypeListData,
+            List<NameUrlEntity> pokemonTypeListNames,
+            NameUrlEntity? pokemonTypeSelected,
+            List<PokemonPageEntity> pokemonPageList)?
         initial,
     required TResult orElse(),
   }) =>
@@ -75,6 +98,9 @@ abstract class $PokemonStateCopyWith<$Res> {
       {PokemonStatus status,
       int pageSelected,
       List<Pokemon> pokemonList,
+      List<PokemonTypeListEntity> pokemonTypeListData,
+      List<NameUrlEntity> pokemonTypeListNames,
+      NameUrlEntity? pokemonTypeSelected,
       List<PokemonPageEntity> pokemonPageList});
 }
 
@@ -94,6 +120,9 @@ class _$PokemonStateCopyWithImpl<$Res, $Val extends PokemonState>
     Object? status = null,
     Object? pageSelected = null,
     Object? pokemonList = null,
+    Object? pokemonTypeListData = null,
+    Object? pokemonTypeListNames = null,
+    Object? pokemonTypeSelected = freezed,
     Object? pokemonPageList = null,
   }) {
     return _then(_value.copyWith(
@@ -109,6 +138,18 @@ class _$PokemonStateCopyWithImpl<$Res, $Val extends PokemonState>
           ? _value.pokemonList
           : pokemonList // ignore: cast_nullable_to_non_nullable
               as List<Pokemon>,
+      pokemonTypeListData: null == pokemonTypeListData
+          ? _value.pokemonTypeListData
+          : pokemonTypeListData // ignore: cast_nullable_to_non_nullable
+              as List<PokemonTypeListEntity>,
+      pokemonTypeListNames: null == pokemonTypeListNames
+          ? _value.pokemonTypeListNames
+          : pokemonTypeListNames // ignore: cast_nullable_to_non_nullable
+              as List<NameUrlEntity>,
+      pokemonTypeSelected: freezed == pokemonTypeSelected
+          ? _value.pokemonTypeSelected
+          : pokemonTypeSelected // ignore: cast_nullable_to_non_nullable
+              as NameUrlEntity?,
       pokemonPageList: null == pokemonPageList
           ? _value.pokemonPageList
           : pokemonPageList // ignore: cast_nullable_to_non_nullable
@@ -129,6 +170,9 @@ abstract class _$$PokemonInitialImplCopyWith<$Res>
       {PokemonStatus status,
       int pageSelected,
       List<Pokemon> pokemonList,
+      List<PokemonTypeListEntity> pokemonTypeListData,
+      List<NameUrlEntity> pokemonTypeListNames,
+      NameUrlEntity? pokemonTypeSelected,
       List<PokemonPageEntity> pokemonPageList});
 }
 
@@ -146,6 +190,9 @@ class __$$PokemonInitialImplCopyWithImpl<$Res>
     Object? status = null,
     Object? pageSelected = null,
     Object? pokemonList = null,
+    Object? pokemonTypeListData = null,
+    Object? pokemonTypeListNames = null,
+    Object? pokemonTypeSelected = freezed,
     Object? pokemonPageList = null,
   }) {
     return _then(_$PokemonInitialImpl(
@@ -161,6 +208,18 @@ class __$$PokemonInitialImplCopyWithImpl<$Res>
           ? _value._pokemonList
           : pokemonList // ignore: cast_nullable_to_non_nullable
               as List<Pokemon>,
+      pokemonTypeListData: null == pokemonTypeListData
+          ? _value._pokemonTypeListData
+          : pokemonTypeListData // ignore: cast_nullable_to_non_nullable
+              as List<PokemonTypeListEntity>,
+      pokemonTypeListNames: null == pokemonTypeListNames
+          ? _value._pokemonTypeListNames
+          : pokemonTypeListNames // ignore: cast_nullable_to_non_nullable
+              as List<NameUrlEntity>,
+      pokemonTypeSelected: freezed == pokemonTypeSelected
+          ? _value.pokemonTypeSelected
+          : pokemonTypeSelected // ignore: cast_nullable_to_non_nullable
+              as NameUrlEntity?,
       pokemonPageList: null == pokemonPageList
           ? _value._pokemonPageList
           : pokemonPageList // ignore: cast_nullable_to_non_nullable
@@ -176,8 +235,13 @@ class _$PokemonInitialImpl extends _PokemonInitial {
       {this.status = PokemonStatus.loading,
       this.pageSelected = 0,
       final List<Pokemon> pokemonList = const [],
+      final List<PokemonTypeListEntity> pokemonTypeListData = const [],
+      final List<NameUrlEntity> pokemonTypeListNames = const [],
+      this.pokemonTypeSelected = null,
       final List<PokemonPageEntity> pokemonPageList = const []})
       : _pokemonList = pokemonList,
+        _pokemonTypeListData = pokemonTypeListData,
+        _pokemonTypeListNames = pokemonTypeListNames,
         _pokemonPageList = pokemonPageList,
         super._();
 
@@ -196,6 +260,29 @@ class _$PokemonInitialImpl extends _PokemonInitial {
     return EqualUnmodifiableListView(_pokemonList);
   }
 
+  final List<PokemonTypeListEntity> _pokemonTypeListData;
+  @override
+  @JsonKey()
+  List<PokemonTypeListEntity> get pokemonTypeListData {
+    if (_pokemonTypeListData is EqualUnmodifiableListView)
+      return _pokemonTypeListData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pokemonTypeListData);
+  }
+
+  final List<NameUrlEntity> _pokemonTypeListNames;
+  @override
+  @JsonKey()
+  List<NameUrlEntity> get pokemonTypeListNames {
+    if (_pokemonTypeListNames is EqualUnmodifiableListView)
+      return _pokemonTypeListNames;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pokemonTypeListNames);
+  }
+
+  @override
+  @JsonKey()
+  final NameUrlEntity? pokemonTypeSelected;
   final List<PokemonPageEntity> _pokemonPageList;
   @override
   @JsonKey()
@@ -207,7 +294,7 @@ class _$PokemonInitialImpl extends _PokemonInitial {
 
   @override
   String toString() {
-    return 'PokemonState.initial(status: $status, pageSelected: $pageSelected, pokemonList: $pokemonList, pokemonPageList: $pokemonPageList)';
+    return 'PokemonState.initial(status: $status, pageSelected: $pageSelected, pokemonList: $pokemonList, pokemonTypeListData: $pokemonTypeListData, pokemonTypeListNames: $pokemonTypeListNames, pokemonTypeSelected: $pokemonTypeSelected, pokemonPageList: $pokemonPageList)';
   }
 
   @override
@@ -221,6 +308,12 @@ class _$PokemonInitialImpl extends _PokemonInitial {
             const DeepCollectionEquality()
                 .equals(other._pokemonList, _pokemonList) &&
             const DeepCollectionEquality()
+                .equals(other._pokemonTypeListData, _pokemonTypeListData) &&
+            const DeepCollectionEquality()
+                .equals(other._pokemonTypeListNames, _pokemonTypeListNames) &&
+            (identical(other.pokemonTypeSelected, pokemonTypeSelected) ||
+                other.pokemonTypeSelected == pokemonTypeSelected) &&
+            const DeepCollectionEquality()
                 .equals(other._pokemonPageList, _pokemonPageList));
   }
 
@@ -230,6 +323,9 @@ class _$PokemonInitialImpl extends _PokemonInitial {
       status,
       pageSelected,
       const DeepCollectionEquality().hash(_pokemonList),
+      const DeepCollectionEquality().hash(_pokemonTypeListData),
+      const DeepCollectionEquality().hash(_pokemonTypeListNames),
+      pokemonTypeSelected,
       const DeepCollectionEquality().hash(_pokemonPageList));
 
   @JsonKey(ignore: true)
@@ -242,33 +338,54 @@ class _$PokemonInitialImpl extends _PokemonInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PokemonStatus status, int pageSelected,
-            List<Pokemon> pokemonList, List<PokemonPageEntity> pokemonPageList)
+    required TResult Function(
+            PokemonStatus status,
+            int pageSelected,
+            List<Pokemon> pokemonList,
+            List<PokemonTypeListEntity> pokemonTypeListData,
+            List<NameUrlEntity> pokemonTypeListNames,
+            NameUrlEntity? pokemonTypeSelected,
+            List<PokemonPageEntity> pokemonPageList)
         initial,
   }) {
-    return initial(status, pageSelected, pokemonList, pokemonPageList);
+    return initial(status, pageSelected, pokemonList, pokemonTypeListData,
+        pokemonTypeListNames, pokemonTypeSelected, pokemonPageList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PokemonStatus status, int pageSelected,
-            List<Pokemon> pokemonList, List<PokemonPageEntity> pokemonPageList)?
+    TResult? Function(
+            PokemonStatus status,
+            int pageSelected,
+            List<Pokemon> pokemonList,
+            List<PokemonTypeListEntity> pokemonTypeListData,
+            List<NameUrlEntity> pokemonTypeListNames,
+            NameUrlEntity? pokemonTypeSelected,
+            List<PokemonPageEntity> pokemonPageList)?
         initial,
   }) {
-    return initial?.call(status, pageSelected, pokemonList, pokemonPageList);
+    return initial?.call(status, pageSelected, pokemonList, pokemonTypeListData,
+        pokemonTypeListNames, pokemonTypeSelected, pokemonPageList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PokemonStatus status, int pageSelected,
-            List<Pokemon> pokemonList, List<PokemonPageEntity> pokemonPageList)?
+    TResult Function(
+            PokemonStatus status,
+            int pageSelected,
+            List<Pokemon> pokemonList,
+            List<PokemonTypeListEntity> pokemonTypeListData,
+            List<NameUrlEntity> pokemonTypeListNames,
+            NameUrlEntity? pokemonTypeSelected,
+            List<PokemonPageEntity> pokemonPageList)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(status, pageSelected, pokemonList, pokemonPageList);
+      return initial(status, pageSelected, pokemonList, pokemonTypeListData,
+          pokemonTypeListNames, pokemonTypeSelected, pokemonPageList);
     }
     return orElse();
   }
@@ -307,6 +424,9 @@ abstract class _PokemonInitial extends PokemonState {
       {final PokemonStatus status,
       final int pageSelected,
       final List<Pokemon> pokemonList,
+      final List<PokemonTypeListEntity> pokemonTypeListData,
+      final List<NameUrlEntity> pokemonTypeListNames,
+      final NameUrlEntity? pokemonTypeSelected,
       final List<PokemonPageEntity> pokemonPageList}) = _$PokemonInitialImpl;
   _PokemonInitial._() : super._();
 
@@ -316,6 +436,12 @@ abstract class _PokemonInitial extends PokemonState {
   int get pageSelected;
   @override
   List<Pokemon> get pokemonList;
+  @override
+  List<PokemonTypeListEntity> get pokemonTypeListData;
+  @override
+  List<NameUrlEntity> get pokemonTypeListNames;
+  @override
+  NameUrlEntity? get pokemonTypeSelected;
   @override
   List<PokemonPageEntity> get pokemonPageList;
   @override

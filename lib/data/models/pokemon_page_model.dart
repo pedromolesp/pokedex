@@ -2,7 +2,7 @@ class PokemonPageModel {
   int? count;
   String? next;
   String? previous;
-  List<Results>? results;
+  List<NameUrl>? results;
 
   PokemonPageModel({this.count, this.next, this.previous, this.results});
 
@@ -11,9 +11,9 @@ class PokemonPageModel {
     next = json['next'];
     previous = json['previous'];
     if (json['results'] != null) {
-      results = <Results>[];
+      results = <NameUrl>[];
       json['results'].forEach((v) {
-        results!.add(Results.fromJson(v));
+        results!.add(NameUrl.fromJson(v));
       });
     }
   }
@@ -30,13 +30,13 @@ class PokemonPageModel {
   }
 }
 
-class Results {
+class NameUrl {
   String? name;
   String? url;
 
-  Results({this.name, this.url});
+  NameUrl({this.name, this.url});
 
-  Results.fromJson(Map<String, dynamic> json) {
+  NameUrl.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     url = json['url'];
   }

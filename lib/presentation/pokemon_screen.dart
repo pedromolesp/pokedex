@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pokedex/config/l10n/context_extension.dart';
+import 'package:pokedex/config/router.dart';
 import 'package:pokedex/config/strings_utils.dart';
 import 'package:pokedex/data/models/pokemon_page_model.dart';
 import 'package:pokedex/domain/model/pokemon_entity.dart';
@@ -19,16 +22,19 @@ class _PokemonScreenState extends State<PokemonScreen> {
   @override
   void initState() {
     super.initState();
-
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
         final cubit = context.read<PokemonCubit>();
-        final pages = cubit.state.pokemonPageList;
-        if (pages.isNotEmpty) {
-          final nextPageUrl = pages.last.next ?? '';
-          if (nextPageUrl.isNotEmpty) {
-            cubit.getPokemonList(url: nextPageUrl);
+        if (cubit.state.pokemonTypeSelected == null) {
+          if (!(cubit.state.status == PokemonStatus.loading)) {
+            final pages = cubit.state.pokemonPageList;
+            if (pages.isNotEmpty) {
+              final nextPageUrl = pages.last.next ?? '';
+              if (nextPageUrl.isNotEmpty) {
+                cubit.getPokemonList(url: nextPageUrl);
+              }
+            }
           }
         }
       }
@@ -40,29 +46,40 @@ class _PokemonScreenState extends State<PokemonScreen> {
     return BlocBuilder<PokemonCubit, PokemonState>(builder: (context, state) {
       List<Pokemon> pokemonList = state.pokemonList;
 
-      return Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.only(bottom: 30),
-              controller: _scrollController,
-              itemCount: pokemonList.length,
-              itemBuilder: (context, index) {
-                var pokemon = pokemonList[index];
-                return ListTile(
-                  leading: Image.network(pokemon.sprites?.frontDefault ?? ''),
-                  title: Text(capitalizeFirstLetter(pokemon.name) ?? ''),
-                );
-              },
+      if (state.status == PokemonStatus.error) {
+        return Center(
+          child: Text(context.localizations.error),
+        );
+      } else {
+        return Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.only(bottom: 30),
+                controller: _scrollController,
+                itemCount: pokemonList.length,
+                itemBuilder: (context, index) {
+                  var pokemon = pokemonList[index];
+                  return ListTile(
+                    onTap: () {
+                      context.go('/detail', extra: pokemon);
+                    },
+                    leading: pokemon.sprites?.frontDefault != null
+                        ? Image.network(pokemon.sprites!.frontDefault!)
+                        : const SizedBox.shrink(),
+                    title: Text(capitalizeFirstLetter(pokemon.name) ?? ''),
+                  );
+                },
+              ),
             ),
-          ),
-          if (state.status == PokemonStatus.loading)
-            const CircularProgressIndicator(),
-          const SizedBox(
-            height: 10,
-          )
-        ],
-      );
+            if (state.status == PokemonStatus.loading)
+              const CircularProgressIndicator(),
+            const SizedBox(
+              height: 10,
+            )
+          ],
+        );
+      }
     });
   }
 }
