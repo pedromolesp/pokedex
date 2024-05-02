@@ -12,5 +12,7 @@ class PokemonState with _$PokemonState {
 
   factory PokemonState.initial(
       {@Default(PokemonStatus.loading) PokemonStatus status,
-      @Default([]) List<Pokemon> pokemonList}) = _PokemonInitial;
+      @Default(0) int pageSelected,
+      @Default([]) List<Pokemon> pokemonList,
+      @Default([]) List<PokemonPageEntity> pokemonPageList}) = _PokemonInitial;
 }

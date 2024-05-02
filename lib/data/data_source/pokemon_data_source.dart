@@ -4,7 +4,7 @@ import 'package:pokedex/utils/result.dart';
 
 abstract interface class PokemonDataSource {
   Future<Result<PokemonPageModel, Exception>> getPage(
-    String offSet,
+    String url,
   );
   Future<Result<PokemonModel, Exception>> getPokemonInfo(
     String url,

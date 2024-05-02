@@ -1,7 +1,7 @@
 class PokemonPageModel {
   int? count;
   String? next;
-  Null? previous;
+  String? previous;
   List<Results>? results;
 
   PokemonPageModel({this.count, this.next, this.previous, this.results});
@@ -19,7 +19,7 @@ class PokemonPageModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['count'] = count;
     data['next'] = next;
     data['previous'] = previous;
@@ -42,7 +42,7 @@ class Results {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['url'] = url;
     return data;

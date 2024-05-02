@@ -12,9 +12,7 @@ class PokemonApiDataSource implements PokemonDataSource {
   final urlBasePokemonPage = 'https://pokeapi.co/api/v2/pokemon';
   @override
   Future<Result<PokemonPageModel, Exception>> getPage(String offSet) async {
-    final url = offSet != ''
-        ? '$urlBasePokemonPage?offset=20&limit=20'
-        : urlBasePokemonPage;
+    final url = offSet != '' ? offSet : urlBasePokemonPage;
     try {
       final response = await _dio.get<Map<String, dynamic>>(
         url,
